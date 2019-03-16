@@ -1,0 +1,11 @@
+
+.form-control {
+  width: 80%;
+  display: inline-block;
+}
+
+.allSel {
+  width: 30%;
+  margin-left: 80px;
+  display: block;
+}
