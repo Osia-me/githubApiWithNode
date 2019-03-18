@@ -9,3 +9,11 @@
   margin-left: 80px;
   display: block;
 }
+
+.col-md{
+  margin-bottom: 10px;
+}
+
+.repo{
+  display: none;
+}

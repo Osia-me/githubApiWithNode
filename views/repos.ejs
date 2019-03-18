@@ -17,12 +17,17 @@
 
 <div class="row">
   <% repos.forEach(function(repo){ %>
-    <div class="col-md-4 col-sm-6">
+    <div class="col-md-3 col-sm-6 col-md">
        <div class="card">
            <div class="card-body">
              <h5 class="card-title"> <%= repo.name %></h5>
-             <p><%= repo.id %></p>
-             <p><%= repo.description %></p>
+             <p>id: <%= repo.id %></p>
+             <p>description: <%= repo.description %>...</p>
+               <form class="form-new-post" action="/selected" method="post">
+                 <input type="text" name="repo" value="<%=repo.id%>" class="repo">
+                 <input type="Submit" name="check" value="Select" class="btn btn-success">
+               </form>
+
            </div>
         </div>
     </div>
