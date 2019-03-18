@@ -15,22 +15,20 @@
     </div>
   </nav>
 
-  <div class="container searchContainer">
-
-    <div class="search card card-body">
-      <h1>Search GitHub Users</h1>
-      <form action="/repos" method="post" class="form-new-post">
-          <input type="text" id="userName" class="form-control" placeholder="GitHub Username..." name="userName" required />
-          <input type='Submit' class="btn btn-success" value="Submit" />
-      </form>
-
-    </div>
-
-    <br>
-    <div id="profile"></div>
+  <div class="row">
+    <% selected.forEach(function(select){ %>
+      <div class="col-md-3 col-sm-6 col-md">
+         <div class="card">
+             <div class="card-body">
+               <h5 class="card-title"> <%= select.name %></h5>
+               <p>id: <%= select.id %></p>
+               <p>description: <%= select.description %>...</p>
+             </div>
+          </div>
+      </div>
+     <% }); %>
   </div>
 
-  <a href="/selected" class="btn btn-primary allSel">See selected repos</a>
 
   <footer class="mt-5 p-3 text-center bg-light">
     GitHub Finder &copy;

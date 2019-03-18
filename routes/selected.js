@@ -8,13 +8,13 @@ let selected    = [];
 //Get the id of selected repository
 router.post('/', (req, res) => {
   repoId = req.body.repo;
-  res.redirect('/selected');
-});
-
-//fetch data about selected repository and
-router.get('/', (req, res) => {
   getItemById(repoId);
   res.redirect('/repos');
+});
+
+//Show the information about selected repositories
+router.get('/', (req, res) => {
+  res.render('selected', {selected: selected});
 });
 
 //logic for fetching data from github api
