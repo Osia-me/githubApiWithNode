@@ -6,7 +6,7 @@ let   query   = '';
 let   user    = [];
 let   repos   = {};
 
-//routes
+//Getting query from input
 router.post('/', (req, res) => {
   if(query === null){
     res.redirect('back');
@@ -17,12 +17,13 @@ router.post('/', (req, res) => {
   }
 });
 
+//Rendering the page with repositories of the query user
 router.get('/', (req, res) => {
   getUser(query);
   res.render('repos', {repos: repos})
 });
 
-//logic
+//Logic for fetching user with query name
 const getUser = (userName) => {
   axios.get(`https://api.github.com/users/${userName}?client_id=${config.client_id}&client_secret=${config.client_secret}`)
     .then((data) => {
@@ -34,6 +35,8 @@ const getUser = (userName) => {
     });
   }
 
+
+//Logic for fetching repositories for query user
 const getRepos = (url) => {
   axios.get(url)
   .then(data => {
