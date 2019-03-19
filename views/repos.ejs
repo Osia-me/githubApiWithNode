@@ -14,7 +14,8 @@
       <a href="#" class="navbar-brand">HTTP API With Node.js</a>
     </div>
   </nav>
-
+<a href="/selected" class="btn btn-primary btn-block allSel">See selected repos</a>
+<br>
 <div class="row">
   <% repos.forEach(function(repo){ %>
     <div class="col-md-3 col-sm-6 col-md">
@@ -22,7 +23,7 @@
            <div class="card-body">
              <h5 class="card-title"> <%= repo.name.substring(0,10) %></h5>
              <p>id: <%= repo.id %></p>
-             <p>description: <%= repo.description.substring(0,30) %>...</p>
+             <p>description: <%= repo.description %>...</p>
                <form class="form-new-post" action="/selected" method="post">
                  <input type="text" name="repo" value="<%=repo.id%>" class="repo">
                  <input type="Submit" name="check" value="Select" class="btn btn-success">

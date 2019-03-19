@@ -15,15 +15,16 @@ router.post('/', (req, res) => {
 //Show the information about selected repositories
 router.get('/', (req, res) => {
   res.render('selected', {selected: selected});
+  console.log(selected);
 });
 
 //logic for fetching data from github api
 const getItemById = (id) => {
   axios.get(`https://api.github.com/repositories/${id}?client_id=${config.client_id}&client_secret=${config.client_secret}`)
     .then((data) => {
-      selected.push(data.data);
-      console.log(selected);
+      selected.push(data.data)
     })
+    .then(console.log(selected))
     .catch((error) => {
       console.log(error);
     });
