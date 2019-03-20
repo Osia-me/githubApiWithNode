@@ -4,7 +4,7 @@ const axios   = require('axios');
 const config  = require('../config');
 let   query   = '';
 let   user    = [];
-let   repos   = {};
+let   repos   = null;
 
 //Getting query from input
 router.post('/', (req, res) => {
@@ -13,14 +13,16 @@ router.post('/', (req, res) => {
   } else {
     query = req.body.userName;
     res.redirect('/repos');
-    
+
   }
 });
 
 //Rendering the page with repositories of the query user
 router.get('/', (req, res) => {
-  getUser(query);
-  res.render('repos', {repos: repos})
+    getUser(query);
+    setTimeout(function() {
+    res.render('repos', {repos: repos})
+  }, 2000);
 });
 
 //Logic for fetching user with query name
@@ -42,6 +44,7 @@ const getRepos = (url) => {
   .then(data => {
     repos = data.data;
   })
+  .then(console.log(repos))
   .catch(err => console.log(err))
 }
 
